@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>落雨</title>
+</head>
+<style>
+	body{
+		background-color: #000;
+	}
+</style>
+<script>
+	window.onload=function(){
+		var divs=[];
+        var widths=document.documentElement.clientWidth;
+        var heights=document.documentElement.clientHeight;
+        for (var i = 0; i < 300; i++) {
+        	var div=document.createElement("div");
+        	div.style.cssText="width:1px;height:8px;background:#fff;position:fixed;left:"+(50+(widths-100)*Math.random())+"px;top:-10px;-webkit-filter:blur(1px);filter:blur(1px);transition:top 2s linear "+Math.random()*3+"s;-moz-transition:top 2s linear "+Math.random()*3+"s;";
+        	document.body.appendChild(div);
+        	divs.push(div);
+        };
+        setTimeout(function(){
+            for (var i = 0; i < divs.length; i++) {
+            	divs[i].style.top=heights+"px";
+            	divs[i].addEventListener("webkitTransitionEnd",function(){
+            		
+            		this.style.transition="";
+            		this.style.top=-10+"px";
+                    var that=this;
+                    setTimeout(function(){
+                    	that.style.top=heights+"px";
+                        that.style.transition="top 2s linear "+Math.random()*3+"s";
+                        that.style[-moz-transition]="top 2s linear "+Math.random()*3+"s";
+                    },0)
+            	},false);
+
+            };
+        },0)
+
+	}
+
+</script>
+<body>
+	
+</body>
+</html>
